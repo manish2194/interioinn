@@ -1,105 +1,200 @@
+import { useState } from 'react';
 import { Link } from 'react-router';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Youtube, Mail, MapPin, Phone } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 
 export function Footer() {
-  return (
-    <footer className="bg-primary text-primary-foreground">
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div>
-            <div className="text-2xl font-bold mb-4">
-              Interio<span className="text-accent">Inn</span>
-            </div>
-            <p className="text-primary-foreground/80 mb-6 text-sm leading-relaxed">
-              Complete Interior Solutions. From custom furniture manufacturing to turnkey interior execution, we bring your dream spaces to life.
-            </p>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
+  const [email, setEmail] = useState('');
+  const [showToast, setShowToast] = useState(false);
 
-          {/* Quick Links */}
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setShowToast(true);
+      setEmail('');
+      setTimeout(() => setShowToast(false), 3000);
+    }
+  };
+
+  return (
+    <footer className="bg-[#1C1C1A] text-white">
+      {/* Brand Statement */}
+      <div className="container mx-auto px-4 lg:px-8 pt-16 pb-12">
+        <div className="text-center lg:text-left">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
+            <span className="text-3xl font-bold">Interio<span className="text-[#C9B49A]">Inn</span></span>
+          </h2>
+          <p className="text-white/50 mt-4 max-w-md text-sm lg:text-base">
+            Complete Interior Solutions — Design, Manufacturing, and Installation under one roof.
+          </p>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10" />
+
+      {/* Main Footer */}
+      <div className="container mx-auto px-4 lg:px-8 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+          {/* About */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-sm font-medium tracking-wider uppercase text-white/80 mb-6">About</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/about" className="text-primary-foreground/80 hover:text-accent transition-colors">About Us</Link></li>
-              <li><Link to="/projects" className="text-primary-foreground/80 hover:text-accent transition-colors">Our Projects</Link></li>
-              <li><Link to="/hardware" className="text-primary-foreground/80 hover:text-accent transition-colors">Hardware & Products</Link></li>
-              <li><Link to="/contact" className="text-primary-foreground/80 hover:text-accent transition-colors">Contact Us</Link></li>
+              <li>
+                <Link to="/about" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Our Story
+                </Link>
+              </li>
+              <li>
+                <Link to="/projects" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="font-semibold mb-4">Our Services</h4>
+            <h4 className="text-sm font-medium tracking-wider uppercase text-white/80 mb-6">Services</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/services/modular-kitchens" className="text-primary-foreground/80 hover:text-accent transition-colors">Modular Kitchens</Link></li>
-              <li><Link to="/services/wardrobes" className="text-primary-foreground/80 hover:text-accent transition-colors">Wardrobes</Link></li>
-              <li><Link to="/services/living-room" className="text-primary-foreground/80 hover:text-accent transition-colors">Living Room Furniture</Link></li>
-              <li><Link to="/services/office-interiors" className="text-primary-foreground/80 hover:text-accent transition-colors">Office Interiors</Link></li>
-              <li><Link to="/services/hardware-fittings" className="text-primary-foreground/80 hover:text-accent transition-colors">Hardware & Fittings</Link></li>
+              <li>
+                <Link to="/services/modular-kitchens" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Modular Kitchens
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/wardrobes" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Wardrobes
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/living-room" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Living Room
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/office-interiors" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Office Interiors
+                </Link>
+              </li>
+              <li>
+                <Link to="/hardware" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  Hardware & Fittings
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Connect */}
           <div>
-            <h4 className="font-semibold mb-4">Get In Touch</h4>
+            <h4 className="text-sm font-medium tracking-wider uppercase text-white/80 mb-6">Connect</h4>
             <ul className="space-y-4 text-sm">
-              <li className="flex items-start space-x-3">
-                <MapPin size={18} className="mt-0.5 flex-shrink-0" />
-                <span className="text-primary-foreground/80">123 Design Street, Interior City, IN 560001</span>
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-[#C9B49A] flex-shrink-0 mt-0.5" />
+                <span className="text-white/60">
+                  Harmu Road, Ranchi,<br />Jharkhand - 834002
+                </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={18} className="flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-primary-foreground/80 hover:text-accent transition-colors">+91 98765 43210</a>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-[#C9B49A] flex-shrink-0" />
+                <a href="tel:+919229950050" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  +91 92299 50050
+                </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={18} className="flex-shrink-0" />
-                <a href="mailto:info@interioinn.com" className="text-primary-foreground/80 hover:text-accent transition-colors">info@interioinn.com</a>
+              <li className="flex items-center gap-3">
+                <Mail size={18} className="text-[#C9B49A] flex-shrink-0" />
+                <a href="mailto:info@interioinn.com" className="text-white/60 hover:text-[#C9B49A] transition-colors">
+                  info@interioinn.com
+                </a>
               </li>
             </ul>
-          </div>
-        </div>
 
-        {/* Newsletter */}
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10">
-          <div className="max-w-md">
-            <h4 className="font-semibold mb-3">Subscribe to Our Newsletter</h4>
-            <p className="text-sm text-primary-foreground/80 mb-4">Get the latest updates on interior trends and our projects.</p>
-            <div className="flex gap-2">
-              <Input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            {/* Social Icons */}
+            <div className="flex gap-4 mt-6">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9B49A] hover:text-[#C9B49A] transition-colors"
+              >
+                <Facebook size={18} />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9B49A] hover:text-[#C9B49A] transition-colors"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9B49A] hover:text-[#C9B49A] transition-colors"
+              >
+                <Youtube size={18} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9B49A] hover:text-[#C9B49A] transition-colors"
+              >
+                <Linkedin size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h4 className="text-sm font-medium tracking-wider uppercase text-white/80 mb-6">Newsletter</h4>
+            <p className="text-sm text-white/60 mb-4">
+              Get the latest updates on interior trends and exclusive offers.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="relative">
+              <Input
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-white/5 border-white/10 text-white placeholder:text-white/40 rounded-none pr-24 h-12"
               />
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 whitespace-nowrap">
+              <Button
+                type="submit"
+                className="absolute right-0 top-0 h-12 bg-[#7C5C3E] hover:bg-[#6a4f35] text-white rounded-none px-4"
+              >
                 Subscribe
               </Button>
-            </div>
+            </form>
+            {showToast && (
+              <div className="mt-3 text-sm text-[#C9B49A]">
+                Thank you! We'll be in touch soon.
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-primary-foreground/10">
+      <div className="border-t border-white/10">
         <div className="container mx-auto px-4 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-primary-foreground/60">
-            <p>&copy; 2026 InterioInn. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link to="#" className="hover:text-accent transition-colors">Privacy Policy</Link>
-              <Link to="#" className="hover:text-accent transition-colors">Terms of Service</Link>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
+            <p>&copy; 2026 Interio Inn. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <Link to="#" className="hover:text-[#C9B49A] transition-colors">Privacy Policy</Link>
+              <span className="text-white/20">|</span>
+              <span>Made in Ranchi</span>
             </div>
           </div>
         </div>

@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { Mail, MapPin, Phone, Clock } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -23,11 +25,30 @@ const fadeInUp = {
 };
 
 export function ContactPage() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    service: '',
+    city: '',
+    budget: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const name = `${formData.firstName} ${formData.lastName}`.trim();
+    const service = formData.service || 'interior design';
+    const whatsappUrl = `https://wa.me/919229950050?text=Hi, my name is ${encodeURIComponent(name)}. I'm interested in ${encodeURIComponent(service)}.`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      details: ['+91 98765 43210', '+91 98765 43211'],
+      details: ['+91 92299 50050'],
     },
     {
       icon: <Mail className="w-6 h-6" />,
@@ -37,7 +58,7 @@ export function ContactPage() {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      details: ['123 Design Street', 'Interior City, IN 560001'],
+      details: ['Plot No. 47, Harmu Road', 'Near Harmu Housing Colony', 'Ranchi, Jharkhand - 834002'],
     },
     {
       icon: <Clock className="w-6 h-6" />,
@@ -48,6 +69,11 @@ export function ContactPage() {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Contact Interio Inn | Visit Our Showroom in Ranchi</title>
+        <meta name="description" content="Contact Interio Inn at +91 92299 50050. Visit our 15,000 sq ft showroom at Harmu Road, Ranchi. We serve Ranchi, Jamshedpur, Dhanbad, Bokaro." />
+        <link rel="canonical" href="https://interioinn.com/contact" />
+      </Helmet>
       <Header />
       <WhatsAppButton />
 
@@ -76,42 +102,72 @@ export function ContactPage() {
             <div className="lg:col-span-2">
               <motion.div {...fadeInUp} className="bg-background rounded-2xl p-8 lg:p-12 border border-border">
                 <h2 className="mb-8">Book a Free Consultation</h2>
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" placeholder="John" className="mt-2" />
+                      <Input
+                        id="firstName"
+                        placeholder="Rahul"
+                        className="mt-2"
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                        required
+                      />
                     </div>
                     <div>
                       <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" placeholder="Doe" className="mt-2" />
+                      <Input
+                        id="lastName"
+                        placeholder="Sharma"
+                        className="mt-2"
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="email">Email *</Label>
-                      <Input id="email" type="email" placeholder="john@example.com" className="mt-2" />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="rahul@example.com"
+                        className="mt-2"
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        required
+                      />
                     </div>
                     <div>
                       <Label htmlFor="phone">Phone *</Label>
-                      <Input id="phone" type="tel" placeholder="+91 98765 43210" className="mt-2" />
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="+91 92299 50050"
+                        className="mt-2"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div>
                     <Label htmlFor="service">Service Interested In *</Label>
-                    <Select>
+                    <Select onValueChange={(value) => setFormData({...formData, service: value})}>
                       <SelectTrigger className="mt-2">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="modular-kitchens">Modular Kitchens</SelectItem>
-                        <SelectItem value="wardrobes">Wardrobes</SelectItem>
-                        <SelectItem value="living-room">Living Room Furniture</SelectItem>
-                        <SelectItem value="office-interiors">Office Interiors</SelectItem>
-                        <SelectItem value="complete-interiors">Complete Home Interiors</SelectItem>
-                        <SelectItem value="hardware">Hardware & Fittings</SelectItem>
+                        <SelectItem value="Modular Kitchens">Modular Kitchens</SelectItem>
+                        <SelectItem value="Wardrobes">Wardrobes</SelectItem>
+                        <SelectItem value="Living Room Furniture">Living Room Furniture</SelectItem>
+                        <SelectItem value="Office Interiors">Office Interiors</SelectItem>
+                        <SelectItem value="Complete Home Interiors">Complete Home Interiors</SelectItem>
+                        <SelectItem value="Hardware & Fittings">Hardware & Fittings</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -119,11 +175,18 @@ export function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="city">City *</Label>
-                      <Input id="city" placeholder="Mumbai" className="mt-2" />
+                      <Input
+                        id="city"
+                        placeholder="Ranchi"
+                        className="mt-2"
+                        value={formData.city}
+                        onChange={(e) => setFormData({...formData, city: e.target.value})}
+                        required
+                      />
                     </div>
                     <div>
                       <Label htmlFor="budget">Budget Range</Label>
-                      <Select>
+                      <Select onValueChange={(value) => setFormData({...formData, budget: value})}>
                         <SelectTrigger className="mt-2">
                           <SelectValue placeholder="Select budget range" />
                         </SelectTrigger>
@@ -140,15 +203,17 @@ export function ContactPage() {
 
                   <div>
                     <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
-                      placeholder="Tell us about your project requirements..." 
+                    <Textarea
+                      id="message"
+                      placeholder="Tell us about your project requirements..."
                       rows={5}
                       className="mt-2"
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
                     />
                   </div>
 
-                  <Button size="lg" className="w-full bg-secondary hover:bg-secondary/90 text-white">
+                  <Button type="submit" size="lg" className="w-full bg-secondary hover:bg-secondary/90 text-white">
                     Submit Enquiry
                   </Button>
 
@@ -188,49 +253,52 @@ export function ContactPage() {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeInUp}>
-            <div className="rounded-2xl overflow-hidden border border-border h-96 bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <MapPin size={48} className="mx-auto mb-4 text-muted-foreground" />
-                <p className="text-muted-foreground">Interactive map would be displayed here</p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  123 Design Street, Interior City, IN 560001
-                </p>
-              </div>
+            <div className="rounded-2xl overflow-hidden border border-border h-48 sm:h-64 lg:h-96">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.5!2d85.3096!3d23.3441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDIwJzM4LjgiTiA4NcKwMTgnMzQuNiJF!5e0!3m2!1sen!2sin!4v1234567890"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Interio Inn Location - Ranchi, Jharkhand"
+              />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Visit Showroom Section */}
-      <section className="py-24 bg-white">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div {...fadeInUp}>
-              <h2 className="mb-6">Visit Our Showroom</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Experience our designs in person. Our showroom features full-scale displays of kitchens, wardrobes, and furniture. 
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-6">Visit Ranchi's Largest Interior Showroom</h2>
+              <p className="text-base sm:text-lg text-muted-foreground mb-8">
+                Step into our 15,000 sq. ft. showroom — explore hundreds of designs across kitchens, wardrobes, living rooms and more.
                 Browse through material samples and hardware options with our expert consultants.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12">
                 <div className="bg-background rounded-xl p-6 border border-border">
                   <h4 className="mb-3">Main Showroom</h4>
                   <p className="text-sm text-muted-foreground">
-                    123 Design Street<br />
-                    Interior City, IN 560001
+                    Plot No. 47, Harmu Road<br />
+                    Ranchi, Jharkhand - 834002
                   </p>
                 </div>
                 <div className="bg-background rounded-xl p-6 border border-border">
-                  <h4 className="mb-3">Manufacturing Unit</h4>
+                  <h4 className="mb-3">Service Area</h4>
                   <p className="text-sm text-muted-foreground">
-                    Plot 45, Industrial Area<br />
-                    Phase 2, IN 560002
+                    Ranchi, Jamshedpur<br />
+                    Dhanbad, Bokaro
                   </p>
                 </div>
                 <div className="bg-background rounded-xl p-6 border border-border">
-                  <h4 className="mb-3">Experience Center</h4>
+                  <h4 className="mb-3">Working Hours</h4>
                   <p className="text-sm text-muted-foreground">
-                    456 Premium Plaza<br />
-                    Downtown, IN 560003
+                    Mon-Sat: 9AM - 7PM<br />
+                    Sunday: 10AM - 5PM
                   </p>
                 </div>
               </div>
@@ -240,16 +308,16 @@ export function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-16 sm:py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="mb-4">Common Questions</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">Common Questions</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               Quick answers to questions you may have
             </p>
           </motion.div>
 
-          <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
             {[
               {
                 q: 'Do you offer free consultations?',
@@ -265,7 +333,7 @@ export function ContactPage() {
               },
               {
                 q: 'What areas do you serve?',
-                a: 'We serve major cities across India with dedicated teams in each region.'
+                a: 'We serve Ranchi, Jamshedpur, Dhanbad, Bokaro and other cities across Jharkhand.'
               },
               {
                 q: 'What warranty do you offer?',
@@ -280,9 +348,9 @@ export function ContactPage() {
                 key={index}
                 {...fadeInUp}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 border border-border"
+                className="bg-white rounded-xl px-4 sm:px-6 py-5 sm:py-6 border border-border"
               >
-                <h4 className="mb-3 text-base">{faq.q}</h4>
+                <h4 className="mb-3 text-sm sm:text-base">{faq.q}</h4>
                 <p className="text-sm text-muted-foreground">{faq.a}</p>
               </motion.div>
             ))}

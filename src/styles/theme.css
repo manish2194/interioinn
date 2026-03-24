@@ -2,23 +2,25 @@
 
 :root {
   --font-size: 16px;
-  --background: #FAFAF8;
-  --foreground: #1A1A1A;
-  --card: #ffffff;
-  --card-foreground: #1A1A1A;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Jost', system-ui, sans-serif;
+  --background: #FAFAF7;
+  --foreground: #1C1C1A;
+  --card: #FFFFFF;
+  --card-foreground: #1C1C1A;
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #1A1A1A;
-  --primary-foreground: #FAFAF8;
-  --secondary: #8B7355;
-  --secondary-foreground: #FAFAF8;
-  --accent: #D4C4B0;
-  --accent-foreground: #1A1A1A;
-  --muted: #E8E4DF;
-  --muted-foreground: #6B6B6B;
+  --primary: #1C1C1A;
+  --primary-foreground: #FAFAF7;
+  --secondary: #7C5C3E;
+  --secondary-foreground: #FAFAF7;
+  --accent: #C9B49A;
+  --accent-foreground: #1C1C1A;
+  --muted: #F0EBE3;
+  --muted-foreground: #6B6258;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.08);
+  --border: rgba(124, 92, 62, 0.12);
   --input: transparent;
   --input-background: #f3f3f5;
   --switch-background: #cbced4;
@@ -126,13 +128,8 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-body);
   }
-
-  /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
-  */
 
   html {
     font-size: var(--font-size);
@@ -140,49 +137,57 @@
   }
 
   h1 {
+    font-family: var(--font-display);
     font-size: 3.5rem;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
   }
 
   h2 {
+    font-family: var(--font-display);
     font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1.3;
+    font-weight: 500;
+    line-height: 1.2;
     letter-spacing: -0.01em;
   }
 
   h3 {
+    font-family: var(--font-display);
     font-size: 1.75rem;
-    font-weight: 600;
-    line-height: 1.4;
+    font-weight: 500;
+    line-height: 1.3;
   }
 
   h4 {
+    font-family: var(--font-display);
     font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.5;
+    font-weight: 500;
+    line-height: 1.4;
   }
 
   p {
+    font-family: var(--font-body);
     line-height: 1.7;
     color: var(--muted-foreground);
   }
 
   label {
+    font-family: var(--font-body);
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   button {
+    font-family: var(--font-body);
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
-  input {
+  input, select, textarea {
+    font-family: var(--font-body);
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;

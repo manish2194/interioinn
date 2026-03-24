@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 90" width="420" height="90">
+
+  <!-- Monogram mark: bold IN -->
+  <!-- I - thick vertical bar -->
+  <rect x="12" y="12" width="8" height="66" fill="#1C1C1A"/>
+  <!-- I - top serif -->
+  <rect x="4" y="12" width="24" height="6" fill="#1C1C1A"/>
+  <!-- I - bottom serif -->
+  <rect x="4" y="72" width="24" height="6" fill="#1C1C1A"/>
+
+  <!-- N - left vertical -->
+  <rect x="36" y="12" width="8" height="66" fill="#1C1C1A"/>
+  <!-- N - right vertical -->
+  <rect x="66" y="12" width="8" height="66" fill="#1C1C1A"/>
+  <!-- N - diagonal in gold (bold) -->
+  <polygon points="44,12 54,12 74,78 64,78" fill="#C8952E"/>
+
+  <!-- Thin gold accent line between mark and text -->
+  <rect x="92" y="14" width="2" height="62" fill="#C8952E" rx="1"/>
+
+  <!-- INTERIO INN all on one line, bold serif -->
+  <text x="106" y="56"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="32"
+    font-weight="700"
+    letter-spacing="4"
+    fill="#1C1C1A">INTERIO</text>
+
+  <!-- Space dot separator -->
+  <circle cx="272" cy="48" r="3" fill="#C8952E"/>
+
+  <!-- INN in gold, same line, same size -->
+  <text x="282" y="56"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="32"
+    font-weight="700"
+    letter-spacing="4"
+    fill="#C8952E">INN</text>
+
+  <!-- Tagline below, centered under brand name -->
+  <text x="106" y="76"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="9.5"
+    font-style="italic"
+    letter-spacing="3.5"
+    fill="#8B7355">ONE STOP INTERIOR SOLUTION</text>
+
+</svg>

@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 
 export function WhatsAppButton() {
   const handleClick = () => {
-    window.open('https://wa.me/919876543210', '_blank');
+    window.open('https://wa.me/919229950050?text=Hi, I\'m interested in interior design services. I found InterioInn online.', '_blank');
   };
 
   return (

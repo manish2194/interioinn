@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { Search } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -106,6 +107,11 @@ export function HardwarePage() {
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>Premium Hardware & Fittings in Ranchi | Hafele, Hettich, Ebco | Interio Inn</title>
+        <meta name="description" content="Buy premium kitchen and furniture hardware in Ranchi. Authorized dealer for Hafele, Hettich, Ebco. Soft-close hinges, drawer systems, handles at best prices." />
+        <link rel="canonical" href="https://interioinn.com/hardware" />
+      </Helmet>
       <Header />
       <WhatsAppButton />
 
@@ -140,18 +146,18 @@ export function HardwarePage() {
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="relative w-full md:w-96">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={20} />
-              <Input 
-                placeholder="Search products..." 
+              <Input
+                placeholder="Search products..."
                 className="pl-10"
               />
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex overflow-x-auto gap-3 w-full md:w-auto pb-2 md:pb-0">
               {categories.map((category) => (
                 <Button
                   key={category}
                   onClick={() => setActiveFilter(category)}
                   variant={activeFilter === category ? 'default' : 'outline'}
-                  className={activeFilter === category ? 'bg-secondary hover:bg-secondary/90' : ''}
+                  className={`flex-shrink-0 ${activeFilter === category ? 'bg-secondary hover:bg-secondary/90' : ''}`}
                   size="sm"
                 >
                   {category}
@@ -165,7 +171,7 @@ export function HardwarePage() {
       {/* Products Grid */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product, index) => (
               <motion.div
                 key={product.id}
@@ -173,7 +179,7 @@ export function HardwarePage() {
                 transition={{ delay: index * 0.05 }}
                 className="bg-white rounded-2xl overflow-hidden border border-border hover:shadow-lg transition-shadow group"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 sm:h-64 overflow-hidden">
                   <ImageWithFallback
                     src={product.image}
                     alt={product.name}
@@ -236,16 +242,16 @@ export function HardwarePage() {
       </section>
 
       {/* Brands Section */}
-      <section className="py-24 bg-white">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="mb-4">Trusted Brands</h2>
-            <p className="text-lg text-muted-foreground">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">Trusted Brands</h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
               We partner with the world's leading hardware manufacturers
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-8">
             {['Hafele', 'Hettich', 'Blum', 'Ebco', 'Godrej'].map((brand, index) => (
               <motion.div
                 key={brand}
@@ -261,14 +267,14 @@ export function HardwarePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-secondary to-primary text-white">
+      <section className="py-16 sm:py-24 bg-gradient-to-r from-secondary to-primary text-white">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <motion.div {...fadeInUp}>
-            <h2 className="text-white mb-6">Need Help Choosing?</h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl text-white mb-6">Need Help Choosing?</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Our hardware experts can help you select the perfect fittings for your project
             </p>
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
+            <Button size="lg" className="w-full sm:w-auto bg-white text-primary hover:bg-white/90">
               Talk to an Expert
             </Button>
           </motion.div>

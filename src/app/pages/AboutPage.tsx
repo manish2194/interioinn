@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { Users, Award, Target, Zap, CheckCircle2 } from 'lucide-react';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
@@ -14,9 +15,9 @@ const fadeInUp = {
 
 export function AboutPage() {
   const stats = [
-    { number: '500+', label: 'Projects Completed' },
+    { number: '852+', label: 'Projects Completed' },
     { number: '15+', label: 'Years Experience' },
-    { number: '50+', label: 'Expert Designers' },
+    { number: '152k+', label: 'Happy Clients' },
     { number: '98%', label: 'Client Satisfaction' },
   ];
 
@@ -45,17 +46,22 @@ export function AboutPage() {
 
   const capabilities = [
     'In-house design studio with 3D visualization',
-    'State-of-the-art manufacturing facility',
+    '15,000 sq. ft. showroom in Ranchi',
     'Dedicated project management team',
     'Quality control at every stage',
-    '24/7 customer support',
-    'Nationwide service network',
-    'Sustainable and eco-friendly practices',
-    'Extended warranty on all products'
+    'Service across Ranchi, Jamshedpur, Dhanbad, Bokaro',
+    'Partner brands: Hafele, Hettich, Asian Paints',
+    'Easy EMI options via Bajaj Finserv',
+    '1-year service warranty on all projects'
   ];
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>About Interio Inn | Interior Design Company in Ranchi, Jharkhand</title>
+        <meta name="description" content="Learn about Interio Inn - Jharkhand's premier interior design studio with 15+ years experience, 852+ projects completed. Visit our 15,000 sq ft showroom in Ranchi." />
+        <link rel="canonical" href="https://interioinn.com/about" />
+      </Helmet>
       <Header />
       <WhatsAppButton />
 
@@ -76,9 +82,9 @@ export function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-white mb-6">Crafting Spaces, Creating Experiences</h1>
+            <h1 className="text-white mb-6">Jharkhand's Premier Interior Design Studio</h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              With over 15 years of expertise, we transform ordinary spaces into extraordinary living experiences
+              Step into Ranchi's largest 15,000 sq. ft. interior showroom — explore hundreds of designs across kitchens, wardrobes, living rooms and more.
             </p>
           </motion.div>
         </div>
@@ -92,13 +98,13 @@ export function AboutPage() {
               <h2 className="mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Founded in 2011, InterioInn began with a simple vision: to make premium, custom interior solutions accessible to everyone. What started as a small workshop has grown into one of India's leading interior design and manufacturing companies.
+                  Founded in Ranchi, Jharkhand, Interio Inn began with a simple vision: to make premium, custom interior solutions accessible to everyone in the region. What started as a small workshop has grown into Jharkhand's most trusted interior design and manufacturing company.
                 </p>
                 <p>
-                  Today, we operate a state-of-the-art manufacturing facility spanning 50,000 sq ft, equipped with the latest CNC machinery and woodworking technology. Our team of 50+ skilled craftsmen and designers work together to bring your vision to life.
+                  Today, we operate Ranchi's largest interior showroom spanning 15,000 sq. ft., equipped with full-scale displays of kitchens, wardrobes, and living spaces. Our team of skilled craftsmen and designers work together to bring your vision to life — all under one roof.
                 </p>
                 <p>
-                  From modular kitchens to complete home makeovers, we've completed over 500 projects across residential and commercial spaces. Every project is a testament to our commitment to quality, innovation, and customer satisfaction.
+                  As India's first complete interior solution — design, manufacture, and install under one roof — we've completed over 852 projects across Ranchi, Jamshedpur, Dhanbad, and Bokaro. We partner with leading brands like Hafele, Hettich, and Asian Paints to deliver world-class quality at competitive prices.
                 </p>
               </div>
             </motion.div>
@@ -117,7 +123,7 @@ export function AboutPage() {
       {/* Stats Section */}
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -125,7 +131,7 @@ export function AboutPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl lg:text-5xl font-bold mb-2 text-accent">{stat.number}</div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 text-accent">{stat.number}</div>
                 <div className="text-white/80">{stat.label}</div>
               </motion.div>
             ))}
@@ -134,17 +140,17 @@ export function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-24 bg-background">
+      <section className="py-16 sm:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <motion.div {...fadeInUp} className="bg-white rounded-2xl p-10 border border-border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+            <motion.div {...fadeInUp} className="bg-white rounded-2xl p-6 sm:p-10 border border-border">
               <h3 className="mb-4">Our Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
                 To be India's most trusted name in interior solutions, setting new standards in design excellence, quality craftsmanship, and customer satisfaction. We envision spaces that not only look beautiful but enhance the quality of life for those who inhabit them.
               </p>
             </motion.div>
 
-            <motion.div {...fadeInUp} className="bg-white rounded-2xl p-10 border border-border">
+            <motion.div {...fadeInUp} className="bg-white rounded-2xl p-6 sm:p-10 border border-border">
               <h3 className="mb-4">Our Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
                 To deliver exceptional interior solutions through innovative design, superior craftsmanship, and personalized service. We are committed to using sustainable practices, premium materials, and cutting-edge technology to create spaces that inspire and endure.
@@ -155,16 +161,16 @@ export function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-24 bg-white">
+      <section className="py-16 sm:py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="mb-4">Our Core Values</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">Our Core Values</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               The principles that guide everything we do
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -223,7 +229,7 @@ export function AboutPage() {
             <motion.div {...fadeInUp} className="order-1 lg:order-2">
               <h2 className="mb-6">Manufacturing Excellence</h2>
               <p className="text-muted-foreground mb-6">
-                Our 50,000 sq ft state-of-the-art facility is equipped with the latest CNC machinery, ensuring precision and consistency in every piece we create.
+                Our in-house Ranchi workshop is equipped with the latest CNC machinery, ensuring precision and consistency in every piece we create. From design to delivery — everything happens under one roof.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {capabilities.map((capability, index) => (
