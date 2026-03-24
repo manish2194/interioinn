@@ -237,7 +237,7 @@ export function HomePage() {
                 </Button>
               </Link>
               <Link to="/projects">
-                <Button size="lg" variant="outline" className="border-white/60 text-white hover:bg-white/10 px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base rounded-none backdrop-blur-sm">
+                <Button size="lg" className="bg-white text-[#1C1C1A] hover:bg-white/90 border-2 border-white px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base rounded-none font-semibold">
                   View Our Work
                 </Button>
               </Link>
@@ -402,7 +402,7 @@ export function HomePage() {
 
           <motion.div {...fadeInUp} className="mt-12 text-center lg:text-left">
             <Link to="/services/modular-kitchens">
-              <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-none px-8 py-6">
+              <Button className="bg-white text-[#1C1C1A] hover:bg-white/90 font-semibold rounded-none px-8 py-6">
                 Explore All Services <ArrowRight className="ml-2" size={18} />
               </Button>
             </Link>
@@ -656,7 +656,7 @@ export function HomePage() {
                   </Button>
                 </Link>
                 <Link to="/get-quote">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 px-8 py-6 rounded-none">
+                  <Button size="lg" className="bg-white text-[#1C1C1A] hover:bg-white/90 font-semibold px-8 py-6 rounded-none">
                     Get Free Quote
                   </Button>
                 </Link>

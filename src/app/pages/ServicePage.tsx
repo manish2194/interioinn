@@ -548,7 +548,7 @@ export function ServicePage() {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 px-10 py-6 rounded-none">
+                <Button size="lg" className="bg-white text-[#1C1C1A] hover:bg-white/90 font-semibold w-full sm:w-auto px-10 py-6 rounded-none">
                   Visit Showroom
                 </Button>
               </Link>
